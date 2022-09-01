@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: test
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/workdb
+    username: worker
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+
+logging.level:
+  org.hibernate.SQL: debug
+#    org.hibernate.type: trace

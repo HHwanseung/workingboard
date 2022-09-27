@@ -11,14 +11,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
 class UserRepositoryTest {
 
-    @Autowired
-    UserRepository userRepository;
+    @Autowired UserRepository userRepository;
     @Autowired EntityManager em;
 
     @AfterEach
@@ -29,23 +30,24 @@ class UserRepositoryTest {
     @Test
     public void 회원저장() throws Exception {
         //given
-        User user = User.builder()
-                .username("username")
-                .password("123")
-                .nickname("nickname")
-                .email("asd@nate.com")
+        String username = "test";
+        String nickname = "babo";
+
+        userRepository.save(User.builder()
+                .username(username)
+                .password("1234")
+                .email("test@naver.com")
+                .nickname(nickname)
                 .role(Role.USER)
-                .build();
+                .build());
 
         //when
-        User saveUser = userRepository.save(user);
-        
+        List<User> userList = userRepository.findAll();
+
         //then
-        User findUser = userRepository.findById(saveUser.getId()).orElseThrow(() -> new RuntimeException("저장된 회원이 없습니다."));
-
-        assertThat(findUser).isSameAs(saveUser);
-        assertThat(findUser).isSameAs(user);
-
+        User user = userList.get(0);
+        assertThat(user.getUsername()).isEqualTo(username);
+        assertThat(user.getNickname()).isEqualTo(nickname);
     }
 
 

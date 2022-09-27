@@ -6,8 +6,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UserController {
 
-    @GetMapping("/user/save")
+    @GetMapping("/auth/user/save")
     public String userSave() {
         return "user/user-save";
+    }
+
+    @GetMapping("/user/update")
+    public String userUpdate() {
+        return "user/user-update";
     }
 }

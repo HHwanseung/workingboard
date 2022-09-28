@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Getter
+@RequiredArgsConstructor
 public class PrincipalDetail implements UserDetails {
 
     private User user;

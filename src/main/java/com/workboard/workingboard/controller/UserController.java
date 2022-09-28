@@ -11,6 +11,11 @@ public class UserController {
         return "user/user-save";
     }
 
+    @GetMapping("/auth/user/login")
+    public String userLogin() {
+        return "user/user-login";
+    }
+
     @GetMapping("/user/update")
     public String userUpdate() {
         return "user/user-update";

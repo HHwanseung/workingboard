@@ -1,5 +1,6 @@
-package com.workboard.workingboard.damin;
+package com.workboard.workingboard.damin.user.user;
 
+import com.workboard.workingboard.damin.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Getter
-public class User extends BaseTimeEntity{
+public class User extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

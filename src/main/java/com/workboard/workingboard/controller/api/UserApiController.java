@@ -1,12 +1,11 @@
-package com.workboard.workingboard.api;
+package com.workboard.workingboard.controller.api;
 
 import com.workboard.workingboard.Service.user.UserService;
 import com.workboard.workingboard.config.auth.PrincipalDetail;
-import com.workboard.workingboard.damin.User;
+import com.workboard.workingboard.damin.user.user.User;
 import com.workboard.workingboard.dto.user.UserSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,6 +1,7 @@
 package com.workboard.workingboard.config.auth;
 
-import com.workboard.workingboard.damin.User;
+import com.workboard.workingboard.damin.user.user.User;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,7 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@RequiredArgsConstructor
+@Getter
 public class PrincipalDetail implements UserDetails {
 
     private User user;
@@ -80,6 +81,5 @@ public class PrincipalDetail implements UserDetails {
     public Long getId(){
         return user.getId();
     }
-
 }
 

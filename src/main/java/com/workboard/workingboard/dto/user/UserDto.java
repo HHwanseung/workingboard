@@ -1,7 +1,6 @@
 package com.workboard.workingboard.dto.user;
 
-import com.workboard.workingboard.damin.Role;
-import com.workboard.workingboard.damin.User;
+import com.workboard.workingboard.damin.user.user.Role;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

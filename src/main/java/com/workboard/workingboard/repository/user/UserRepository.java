@@ -1,6 +1,6 @@
 package com.workboard.workingboard.repository.user;
 
-import com.workboard.workingboard.damin.User;
+import com.workboard.workingboard.damin.user.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

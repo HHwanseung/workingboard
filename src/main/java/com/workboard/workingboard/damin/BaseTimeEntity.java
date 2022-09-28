@@ -8,19 +8,20 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
+import java.time.LocalDateTime;
 
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-abstract class BaseTimeEntity {
+public abstract class BaseTimeEntity {
 
-    @Column(name = "created_date", nullable = false)
-    @CreatedDate
-    private String createdDate;
+    @Column(name = "created_date")
+    @CreatedDate //생성 시 자동저장
+    private LocalDateTime createdDate;
 
-    @Column(name = "modified_date", nullable = false)
-    @LastModifiedDate
-    private String modifiedDate;
+    @Column(name = "modified_date")
+    @LastModifiedDate//수정 시 자동저장
+    private LocalDateTime modifiedDate;
 
 
 }

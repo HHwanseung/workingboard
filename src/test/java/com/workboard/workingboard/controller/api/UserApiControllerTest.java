@@ -1,7 +1,7 @@
-package com.workboard.workingboard.api;
+package com.workboard.workingboard.controller.api;
 
-import com.workboard.workingboard.damin.Role;
-import com.workboard.workingboard.damin.User;
+import com.workboard.workingboard.damin.user.user.Role;
+import com.workboard.workingboard.damin.user.user.User;
 import com.workboard.workingboard.dto.user.UserSaveRequestDto;
 import com.workboard.workingboard.repository.user.UserRepository;
 import org.junit.jupiter.api.AfterEach;

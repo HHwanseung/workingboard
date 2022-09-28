@@ -2,18 +2,13 @@ package com.workboard.workingboard.Service.user;
 
 
 import com.workboard.workingboard.config.auth.PrincipalDetail;
-import com.workboard.workingboard.damin.User;
-import com.workboard.workingboard.dto.user.UserDto;
-import com.workboard.workingboard.dto.user.UserSaveRequestDto;
+import com.workboard.workingboard.damin.user.user.User;
 import com.workboard.workingboard.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +23,6 @@ public class UserServiceImpl implements UserService{
         String hashPw = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(hashPw);
         return userRepository.save(user).getId();
-
 
     }
 

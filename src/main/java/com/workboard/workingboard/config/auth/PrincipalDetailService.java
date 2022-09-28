@@ -1,6 +1,6 @@
 package com.workboard.workingboard.config.auth;
 
-import com.workboard.workingboard.damin.User;
+import com.workboard.workingboard.damin.user.user.User;
 import com.workboard.workingboard.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,4 +1,4 @@
-package com.workboard.workingboard.damin;
+package com.workboard.workingboard.damin.user.user;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,5 +1,8 @@
-package com.workboard.workingboard.damin;
+package com.workboard.workingboard.damin.reply;
 
+import com.workboard.workingboard.damin.BaseTimeEntity;
+import com.workboard.workingboard.damin.board.Board;
+import com.workboard.workingboard.damin.user.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,7 +16,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Table(name = "comments")
-public class Comment extends BaseTimeEntity{
+public class reply extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +27,7 @@ public class Comment extends BaseTimeEntity{
 
     @ManyToOne
     @JoinColumn(name = "posts_id")
-    private Posts posts;
+    private Board posts;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

@@ -32,14 +32,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/", "/auth/**", "/js/**", "/css/**", "/image/**").permitAll()
-                .anyRequest().authenticated()
+                    .authorizeRequests()
+                    .antMatchers("/", "/auth/**", "/js/**", "/css/**", "/image/**").permitAll()
+                    .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/auth/user/login")
-                .loginProcessingUrl("/auth/api/v1/user/login")
-                .defaultSuccessUrl("/");
+                    .formLogin()
+                    .loginPage("/auth/user/login")
+//                    .loginProcessingUrl("/auth/api/v1/user/login")
+                    .loginProcessingUrl("/auth/user/login")
+                    .defaultSuccessUrl("/");
     }
 
     @Bean

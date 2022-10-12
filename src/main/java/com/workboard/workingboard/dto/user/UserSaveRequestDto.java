@@ -17,7 +17,6 @@ public class UserSaveRequestDto {
 
     @NotEmpty
     private String username; // 아이디
-
     private String password;
     private String nickname;
     private String email;

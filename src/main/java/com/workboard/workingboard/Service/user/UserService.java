@@ -6,11 +6,11 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 public interface UserService {
 
-    Long save(User user) throws Exception;
+    Long save(User user);
 
-    Long update(User user, @AuthenticationPrincipal PrincipalDetail principalDetail);
+//    Long update(User user, @AuthenticationPrincipal PrincipalDetail principalDetail);
 
-    void remove(Long id);
+//    void remove(Long id);
 
 
 

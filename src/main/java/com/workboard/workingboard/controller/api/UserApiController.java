@@ -28,10 +28,10 @@ public class UserApiController {
      * 회원수정 API
      */
 
-    @PutMapping("/api/v1/user")
-    public Long update(@RequestBody User user, @AuthenticationPrincipal PrincipalDetail principalDetail) {
-        userService.update(user, principalDetail);
-        return user.getId();
-    }
+//    @PutMapping("/api/v1/user")
+//    public Long update(@RequestBody User user, @AuthenticationPrincipal PrincipalDetail principalDetail) {
+//        userService.update(user, principalDetail);
+//        return user.getId();
+//    }
 
 }

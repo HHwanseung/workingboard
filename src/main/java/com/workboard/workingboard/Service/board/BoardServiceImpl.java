@@ -34,4 +34,9 @@ public class BoardServiceImpl implements BoardService {
         return boardRepository.findById(id).orElseThrow(() -> new IllegalStateException("해당 아이디가 없습니다 id=" + id ));
     }
 
+    @Override
+    public void deleteById(Long id) {
+        boardRepository.deleteById(id);
+    }
+
 }

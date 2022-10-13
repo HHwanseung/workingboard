@@ -1,9 +1,14 @@
 'use strict';
 
+
 let index = {
     init: function () {
         $("#btn-save").on("click", () => {
             this.save();
+        });
+
+        $("#btn-delete").on("click", () => {
+            this.deleteById();
         });
     },
 
@@ -25,6 +30,25 @@ let index = {
         }).fail(function (err) {
             alert(JSON.stringify(err));
         });
+    },
+
+    deleteById: function () {
+        let id = $("#id").text();
+
+        $.ajax({
+            type: "DELETE",
+            url: "/api/v1/board/" + id,
+            dataType: "json"
+        }).done(function (res) {
+            alert("글삭제가 완료되었습니다.");
+            location.href = "/";
+        }).fail(function (err) {
+            alert(JSON.stringify(err));
+        });
     }
+
 }
+
+
+
 index.init();

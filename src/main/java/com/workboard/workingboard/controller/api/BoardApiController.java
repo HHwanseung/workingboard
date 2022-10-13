@@ -20,4 +20,14 @@ public class BoardApiController {
     public Long save(@RequestBody BoardSaveRequestDto boardSaveRequestDto, @AuthenticationPrincipal PrincipalDetail principalDetail) {
         return boardService.save(boardSaveRequestDto,principalDetail.getUser());
     }
+
+    /**
+     * 글삭제 API
+     */
+
+    @DeleteMapping("/api/va/board/{id}")
+    public Long deleteById(@PathVariable Long id) {
+        boardService.deleteById(id);
+        return id;
+    }
 }

@@ -30,13 +30,13 @@ public class UserServiceImpl implements UserService{
      * 회원수정 로직
      */
 
-//    @Override
-//    public Long update(User user, @AuthenticationPrincipal PrincipalDetail principalDetail) {
-//        User userEntity = userRepository.findById(user.getId()).orElseThrow(() -> new IllegalArgumentException("해당 회원이 없습니다. id=" + user.getId()));
-//        userEntity.update(bCryptPasswordEncoder.encode(user.getPassword()), user.getNickname());
-//        principalDetail.setUser(userEntity);
-//        return userEntity.getId();
-//    }
+    @Override
+    public Long update(User user, @AuthenticationPrincipal PrincipalDetail principalDetail) {
+        User userEntity = userRepository.findById(user.getId()).orElseThrow(() -> new IllegalArgumentException("해당 회원이 없습니다. id=" + user.getId()));
+        userEntity.update(bCryptPasswordEncoder.encode(user.getPassword()), user.getNickname());
+        principalDetail.setUser(userEntity);
+        return userEntity.getId();
+    }
 
 //    @Override
 //    public void remove(Long id) {

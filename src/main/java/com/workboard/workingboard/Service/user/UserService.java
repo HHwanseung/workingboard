@@ -8,7 +8,7 @@ public interface UserService {
 
     Long save(User user);
 
-//    Long update(User user, @AuthenticationPrincipal PrincipalDetail principalDetail);
+    Long update(User user, @AuthenticationPrincipal PrincipalDetail principalDetail);
 
 //    void remove(Long id);
 

@@ -31,6 +31,4 @@ public class BoardSaveRequestDto {
         this.user = user;
     }
 
-
-
 }

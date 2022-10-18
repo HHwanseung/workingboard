@@ -3,6 +3,7 @@ package com.workboard.workingboard.Service.board;
 import com.workboard.workingboard.damin.board.Board;
 import com.workboard.workingboard.damin.user.user.User;
 import com.workboard.workingboard.dto.board.BoardSaveRequestDto;
+import com.workboard.workingboard.dto.board.BoardUpdateRequestDto;
 
 import java.util.List;
 
@@ -15,4 +16,7 @@ public interface BoardService {
     Board detail(Long id);
 
     void deleteById(Long id);
+
+    Long update(Long id, BoardUpdateRequestDto boardUpdateRequestDto);
+
 }

@@ -3,6 +3,7 @@ package com.workboard.workingboard.Service.board;
 import com.workboard.workingboard.damin.board.Board;
 import com.workboard.workingboard.damin.user.user.User;
 import com.workboard.workingboard.dto.board.BoardSaveRequestDto;
+import com.workboard.workingboard.dto.board.BoardUpdateRequestDto;
 import com.workboard.workingboard.repository.board.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,13 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public void deleteById(Long id) {
         boardRepository.deleteById(id);
+    }
+
+    @Override
+    public Long update(Long id, BoardUpdateRequestDto boardUpdateRequestDto) {
+        Board board = boardRepository.findById(id).orElseThrow(() -> new IllegalStateException("해당 Id가 없습니다. id=" + id));
+        board.update(boardUpdateRequestDto.getTitle(), boardUpdateRequestDto.getContent());
+        return id;
     }
 
 }

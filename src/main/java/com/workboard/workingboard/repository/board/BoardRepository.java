@@ -10,9 +10,11 @@ import org.springframework.data.jpa.repository.Query;
 public interface BoardRepository extends JpaRepository<Board, Long> {
 
     @Modifying
-    @Query("update Board p set p. view = p.view + 1 where p.id = :id")
+    @Query(
+            "update Board p set p.view = p.view + 1 where p.id = :id"
+    )
     int updateView(Long id);
 
-    Page<Board> findByTitleContainingOrContentContaining(String title, String conetent, Pageable pageable);
+    Page<Board> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable);
 
 }

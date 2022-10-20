@@ -11,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -20,28 +19,42 @@ public class BoardServiceImpl implements BoardService {
 
     private final BoardRepository boardRepository;
 
+    /**
+     * 글작성 로직
+     */
     @Override
     public Long save(BoardSaveRequestDto boardSaveRequestDto, User user) {
         boardSaveRequestDto.setUser(user);
         return boardRepository.save(boardSaveRequestDto.toEntity()).getId();
     }
 
+    /**
+     * 글목록 로직
+     */
     @Override
-    public List<Board> findAll() {
-        return boardRepository.findAll();
-
+    public Page<Board> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable) {
+        return boardRepository.findByTitleContainingOrContentContaining(title, content, pageable);
     }
 
+    /**
+     * 글상세 로직
+     */
     @Override
     public Board detail(Long id) {
         return boardRepository.findById(id).orElseThrow(() -> new IllegalStateException("해당 아이디가 없습니다 id=" + id ));
     }
 
+    /**
+     * 글삭제 로직
+     */
     @Override
     public void deleteById(Long id) {
         boardRepository.deleteById(id);
     }
 
+    /**
+     * 글수정 로직
+     */
     @Override
     public Long update(Long id, BoardUpdateRequestDto boardUpdateRequestDto) {
         Board board = boardRepository.findById(id).orElseThrow(() -> new IllegalStateException("해당 Id가 없습니다. id=" + id));
@@ -49,14 +62,12 @@ public class BoardServiceImpl implements BoardService {
         return id;
     }
 
-    @Override
-    public Page<Board> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable) {
-        return boardRepository.findByTitleContainingOrContentContaining(title, content, pageable);
-    }
-
+    /**
+     * 글 조회수 로직
+     */
     @Override
     public void updateView(Long id) {
-
+        boardRepository.updateView(id);
     }
 
 }

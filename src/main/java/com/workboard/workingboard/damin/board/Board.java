@@ -1,7 +1,6 @@
 package com.workboard.workingboard.damin.board;
 
 import com.workboard.workingboard.damin.BaseTimeEntity;
-import com.workboard.workingboard.damin.reply.reply;
 import com.workboard.workingboard.damin.user.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -12,6 +12,7 @@ let index = {
         });
         $("#btn-update").on("click", () => {
             let form = document.querySelector("#needs-validation");
+
             if (form.checkValidity() == false) {
                 console.log("회원수정 안됨")
             } else {
@@ -46,7 +47,7 @@ let index = {
         let data = {
             id: $("#id").val(),
             password: $("#password").val(),
-            nickname: $("#nickname").val()
+            nickname: $("#nickname").val(),
         }
 
         $.ajax({

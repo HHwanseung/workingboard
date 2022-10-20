@@ -13,7 +13,7 @@ let index = {
 
         $("#btn-update").on("click", () => {
             this.update();
-        })
+        });
     },
 
     save: function () {
@@ -61,7 +61,7 @@ let index = {
 
         $.ajax({
             type: "PUT",
-            url: "/api/v1/board" + id,
+            url: "/api/v1/board/" + id,
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             dataType: "json"
@@ -71,8 +71,7 @@ let index = {
         }).fail(function (err) {
             alert(JSON.stringify(err));
         });
-    },
-
+    }
 }
 
 index.init();

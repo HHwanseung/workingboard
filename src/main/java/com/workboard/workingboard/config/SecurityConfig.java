@@ -25,8 +25,18 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(principalDetailService).passwordEncoder(bCryptPasswordEncoder());
+//    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+//        AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+//        authenticationManagerBuilder.userDetailsService(userDetailsService);
+//        authenticationManager = authenticationManagerBuilder.build();
+
         http
                 .csrf().disable()
                     .authorizeRequests()
@@ -44,5 +54,6 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
+
 
 }

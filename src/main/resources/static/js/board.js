@@ -58,6 +58,8 @@ let index = {
             title: $("#title").val(),
             content: $("#content").val()
         }
+        console.log(id);
+        console.log(data);
 
         $.ajax({
             type: "PUT",
@@ -67,11 +69,10 @@ let index = {
             dataType: "json"
         }).done(function (res) {
             alert("글수정이 완료되었습니다.");
-            location.href= "/";
+            location.href = "/";
         }).fail(function (err) {
             alert(JSON.stringify(err));
         });
     }
 }
-
 index.init();

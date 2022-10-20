@@ -4,6 +4,8 @@ import com.workboard.workingboard.damin.board.Board;
 import com.workboard.workingboard.damin.user.user.User;
 import com.workboard.workingboard.dto.board.BoardSaveRequestDto;
 import com.workboard.workingboard.dto.board.BoardUpdateRequestDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -19,4 +21,7 @@ public interface BoardService {
 
     Long update(Long id, BoardUpdateRequestDto boardUpdateRequestDto);
 
+    Page<Board> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable);
+
+    void updateView(Long id);
 }

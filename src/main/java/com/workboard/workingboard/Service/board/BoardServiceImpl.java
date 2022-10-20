@@ -6,6 +6,8 @@ import com.workboard.workingboard.dto.board.BoardSaveRequestDto;
 import com.workboard.workingboard.dto.board.BoardUpdateRequestDto;
 import com.workboard.workingboard.repository.board.BoardRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,6 +47,16 @@ public class BoardServiceImpl implements BoardService {
         Board board = boardRepository.findById(id).orElseThrow(() -> new IllegalStateException("해당 Id가 없습니다. id=" + id));
         board.update(boardUpdateRequestDto.getTitle(), boardUpdateRequestDto.getContent());
         return id;
+    }
+
+    @Override
+    public Page<Board> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable) {
+        return boardRepository.findByTitleContainingOrContentContaining(title, content, pageable);
+    }
+
+    @Override
+    public void updateView(Long id) {
+
     }
 
 }

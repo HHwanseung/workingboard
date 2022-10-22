@@ -25,17 +25,8 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(principalDetailService).passwordEncoder(bCryptPasswordEncoder());
-//    }
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
-//        AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
-//        authenticationManagerBuilder.userDetailsService(userDetailsService);
-//        authenticationManager = authenticationManagerBuilder.build();
 
         http
                 .csrf().disable()
@@ -47,6 +38,11 @@ public class SecurityConfig {
                     .loginPage("/auth/user/login")
                     .loginProcessingUrl("/auth/api/v1/user/login")
                     .defaultSuccessUrl("/");
+
+        http
+                .rememberMe().tokenValiditySeconds(60 * 60 * 7)
+                .userDetailsService(principalDetailService);
+
         return http.build();
     }
 

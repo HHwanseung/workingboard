@@ -7,4 +7,6 @@ public interface ReplyService {
 
     void replySave(Long boardId, Reply reply, User user);
 
+    void replyDelete(Long replyId);
+
 }

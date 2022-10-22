@@ -5,10 +5,7 @@ import com.workboard.workingboard.config.auth.PrincipalDetail;
 import com.workboard.workingboard.damin.reply.Reply;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -21,6 +18,11 @@ public class ReplyApiController {
                      @RequestBody Reply reply,
                      @AuthenticationPrincipal PrincipalDetail principalDetail) {
         replyService.replySave(boardId, reply, principalDetail.getUser());
+    }
+
+    @DeleteMapping("/api/v1/board/{boardId}/reply/{replyId}")
+    public void delete(@PathVariable Long replyId) {
+        replyService.replyDelete(replyId);
     }
 
 }

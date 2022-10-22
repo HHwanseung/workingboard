@@ -16,7 +16,7 @@ let replyIndex = {
         console.log(boardId);
         $.ajax({
             type: "POST",
-            url: `/api/v1/board/${boardId}/reply`,
+            url: '/api/v1/board/${boardId}/reply',
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
             dataType: "text"

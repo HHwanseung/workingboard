@@ -25,16 +25,17 @@ public class Reply extends BaseTimeEntity {
     private String content;
 
     @ManyToOne
-    @JoinColumn(name = "boardId")
+    @JoinColumn(name = "board_id")
     private Board board;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private User user;
 
     public void save(Board board, User user) {
         this.board = board;
         this.user = user;
     }
+
 
 }

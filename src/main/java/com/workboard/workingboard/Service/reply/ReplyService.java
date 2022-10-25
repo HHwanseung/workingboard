@@ -5,8 +5,8 @@ import com.workboard.workingboard.damin.user.user.User;
 
 public interface ReplyService {
 
-    void replySave(Long boardId, Reply reply, User user);
+    void replySave(Long board_id, Reply reply, User user);
 
-    void replyDelete(Long replyId);
+    void replyDelete(Long reply_id);
 
 }

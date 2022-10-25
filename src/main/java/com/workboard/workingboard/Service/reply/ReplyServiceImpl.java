@@ -18,9 +18,9 @@ public class ReplyServiceImpl implements ReplyService {
     private final ReplyRepository replyRepository;
 
     @Override
-    public void replySave(Long boardId, Reply reply, User user) {
+    public void replySave(Long board_id, Reply reply, User user) {
 
-        Board board = boardRepository.findById(boardId).orElseThrow(() -> new IllegalArgumentException("해당 boardId가 없습니다. id=" + boardId));
+        Board board = boardRepository.findById(board_id).orElseThrow(() -> new IllegalArgumentException("해당 boardId가 없습니다. id=" + board_id));
 
         reply.save(board, user);
 
@@ -29,9 +29,9 @@ public class ReplyServiceImpl implements ReplyService {
     }
 
     @Override
-    public void replyDelete(Long replyId) {
+    public void replyDelete(Long reply_id) {
 
-        replyRepository.deleteById(replyId);
+        replyRepository.deleteById(reply_id);
 
     }
 }

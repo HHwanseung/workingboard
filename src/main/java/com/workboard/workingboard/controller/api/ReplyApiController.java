@@ -13,16 +13,16 @@ public class ReplyApiController {
 
     private final ReplyService replyService;
 
-    @PostMapping("/api/v1/board/{boardId}/reply")
-    public void save(@PathVariable Long boardId,
+    @PostMapping("/api/v1/board/{board_id}/reply")
+    public void save(@PathVariable Long board_id,
                      @RequestBody Reply reply,
                      @AuthenticationPrincipal PrincipalDetail principalDetail) {
-        replyService.replySave(boardId, reply, principalDetail.getUser());
+        replyService.replySave(board_id, reply, principalDetail.getUser());
     }
 
-    @DeleteMapping("/api/v1/board/{boardId}/reply/{replyId}")
-    public void delete(@PathVariable Long replyId) {
-        replyService.replyDelete(replyId);
+    @DeleteMapping("/api/v1/board/{board_id}/reply/{reply_id}")
+    public void delete(@PathVariable Long reply_id) {
+        replyService.replyDelete(reply_id);
     }
 
 }

@@ -11,7 +11,7 @@ let replyIndex = {
         let data = {
             content: $("#reply-content").val(),
         }
-        let boardId = $("#boardId").val();
+        let board_id = $("#board_id").val();
         console.log(data);
         console.log(board_id);
         $.ajax({

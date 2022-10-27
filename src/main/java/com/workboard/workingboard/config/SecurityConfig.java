@@ -1,6 +1,7 @@
 package com.workboard.workingboard.config;
 
 import com.workboard.workingboard.config.auth.PrincipalDetailService;
+import com.workboard.workingboard.config.oauth.PrincipalOauth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final PrincipalDetailService principalDetailService;
+    private final PrincipalOauth2UserService principalOauth2UserService;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {

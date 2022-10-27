@@ -42,7 +42,12 @@ public class SecurityConfig {
                     .formLogin()
                     .loginPage("/auth/user/login")
                     .loginProcessingUrl("/auth/api/v1/user/login")
-                    .defaultSuccessUrl("/");
+                    .defaultSuccessUrl("/")
+                .and()
+                .oauth2Login()
+                .loginPage("/auth/user/login")
+                .userInfoEndpoint()
+                .userService(principalOauth2UserService);
 
         http
                 .rememberMe().tokenValiditySeconds(60 * 60 * 7)

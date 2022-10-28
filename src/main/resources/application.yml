@@ -23,6 +23,7 @@ spring:
     cache: false
 
     profiles:
+      include: oauth
 
 logging.level:
   org.hibernate.SQL: debug

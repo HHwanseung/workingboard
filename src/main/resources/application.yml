@@ -22,7 +22,7 @@ spring:
   thymeleaf:
     cache: false
 
-
+    profiles:
 
 logging.level:
   org.hibernate.SQL: debug

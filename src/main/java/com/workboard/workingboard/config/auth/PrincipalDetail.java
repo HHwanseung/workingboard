@@ -2,22 +2,29 @@ package com.workboard.workingboard.config.auth;
 
 import com.workboard.workingboard.damin.user.user.User;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 @Getter
-@RequiredArgsConstructor
-public class PrincipalDetail implements UserDetails {
+public class PrincipalDetail implements UserDetails, OAuth2User {
 
     private User user;
+    private Map<String, Object> attributes;
 
     //일반 사용자
     public PrincipalDetail(User user) {
         this.user = user;
+    }
+
+    //OAuth 사용자
+    public PrincipalDetail(User user, Map<String, Object> attributes) {
+        this.user = user;
+        this.attributes = attributes;
     }
 
     public void setUser(User user) {
@@ -44,6 +51,21 @@ public class PrincipalDetail implements UserDetails {
         return user.getUsername();
     }
 
+    //사용자 이메일
+    public String getEmail() {
+        return user.getEmail();
+    }
+
+    //사용자 닉네임
+    public String getNickname() {
+        return user.getNickname();
+    }
+
+    //사용자 pk
+    public Long getId(){
+        return user.getId();
+    }
+
     //계정이 만료되었는지 (true: 만료되지 않음)
     @Override
     public boolean isAccountNonExpired() {
@@ -68,19 +90,14 @@ public class PrincipalDetail implements UserDetails {
         return true;
     }
 
-    //사용자 이메일
-    public String getEmail() {
-        return user.getEmail();
+    @Override
+    public String getName() {
+        return null;
     }
 
-    //사용자 닉네임
-    public String getNickname() {
-        return user.getNickname();
-    }
-
-    //사용자 pk
-    public Long getId(){
-        return user.getId();
+    @Override
+    public Map<String, Object> getAttributes() {
+        return attributes;
     }
 }
 

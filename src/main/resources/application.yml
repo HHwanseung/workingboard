@@ -1,5 +1,6 @@
 spring:
   profiles:
+    include: oauth
     active: local
 
   datasource:
@@ -22,8 +23,7 @@ spring:
   thymeleaf:
     cache: false
 
-    profiles:
-      include: oauth
+
 
 logging.level:
   org.hibernate.SQL: debug

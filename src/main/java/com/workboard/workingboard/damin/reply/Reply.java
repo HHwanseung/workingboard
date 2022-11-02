@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Builder
@@ -31,6 +33,22 @@ public class Reply extends BaseTimeEntity {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    private Reply parent;
+
+    @Builder.Default
+    @OneToMany(mappedBy = "parent", orphanRemoval = true)
+    private List<Reply> children = new ArrayList<>();
+
+    /**
+     * 부모 댓글 수정
+     */
+    public void updateParent(Reply parent) {
+        this.parent = parent;
+    }
+
 
     public void save(Board board, User user) {
         this.board = board;

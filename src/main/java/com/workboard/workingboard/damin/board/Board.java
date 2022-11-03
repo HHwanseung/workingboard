@@ -35,7 +35,6 @@ public class Board extends BaseTimeEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    private String job;
 
     public void update(String title, String content) {
         this.title = title;

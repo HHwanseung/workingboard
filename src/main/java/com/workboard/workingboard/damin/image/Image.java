@@ -20,6 +20,8 @@ public class Image {
 
     private String postImage;
 
+    private String localDate;
+
     @ManyToOne
     @JsonIgnoreProperties({"password", "images"})
     private User user;

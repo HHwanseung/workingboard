@@ -18,6 +18,7 @@ public class GithubUserInfo implements OAuth2UserInfo {
     @Override
     public String getProvider() {
         return "github";
+
     }
 
     @Override

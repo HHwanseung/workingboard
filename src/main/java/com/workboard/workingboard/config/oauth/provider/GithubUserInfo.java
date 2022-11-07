@@ -12,7 +12,7 @@ public class GithubUserInfo implements OAuth2UserInfo {
 
     @Override
     public String getProviderId() {
-        return (String) attributes.get("id");
+        return ((Integer) attributes.get("id")).toString();
     }
 
     @Override

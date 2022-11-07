@@ -26,11 +26,11 @@ public class Reply extends BaseTimeEntity {
     @Column(length = 500, nullable = false)
     private String content;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
     private Board board;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -38,16 +38,13 @@ public class Reply extends BaseTimeEntity {
     @JoinColumn(name = "parent_id")
     private Reply parent;
 
-    @Builder.Default
-    @OneToMany(mappedBy = "parent", orphanRemoval = true)
-    private List<Reply> children = new ArrayList<>();
+    private boolean isRemoved= false;
 
-    /**
-     * 부모 댓글 수정
-     */
-    public void updateParent(Reply parent) {
-        this.parent = parent;
-    }
+    //부모 댓글을 삭제해도 자식 댓글은 살아있음
+    @OneToMany(mappedBy = "parent")
+    private List<Reply> chileList = new ArrayList<>();
+
+
 
 
     public void save(Board board, User user) {

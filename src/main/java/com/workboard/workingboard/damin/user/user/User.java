@@ -1,12 +1,16 @@
 package com.workboard.workingboard.damin.user.user;
 
 import com.workboard.workingboard.damin.BaseTimeEntity;
+import com.workboard.workingboard.damin.board.Board;
+import com.workboard.workingboard.damin.reply.Reply;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -35,11 +39,25 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false)
     private Role role;
 
+    //Oauth
     @Column
     private String provider;
 
     @Column
     private String providerId;
+
+    //회원탈퇴시 게시물, 댓글 삭제
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Board> boardList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reply> replyList = new ArrayList<>();
+
+
+
+
+
+
 
     /**
      * 비밀번호 암호화 메소드
